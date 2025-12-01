@@ -68,21 +68,40 @@
     <!-- Hero Section -->
     <section id="inicio"
         class="relative min-h-screen flex flex-col items-center justify-center hero-bg py-20 overflow-hidden">
-        <div class="container mx-auto px-4 flex flex-col items-center z-10">
-            <!-- The Animation Container (Ahora estático con título y descripción) -->
+        <div class="container mx-auto px-4 flex flex-col items-center z-10 relative justify-center min-h-[80vh]">
+
+            <!-- CONTENEDOR PRINCIPAL (PLACA) -->
+            <!-- Mobile: Vertical, todo adentro. Desktop: Horizontal, solo texto. -->
             <div
-                class="metal-container mb-8 transform hover:scale-[1.02] transition-transform duration-500 flex flex-col items-center justify-center p-10 text-center gap-2">
-                <h1 class="plate-text text-center leading-none text-5xl md:text-7xl">HERRERÍA EN GENERAL</h1>
-                <p class="text-base md:text-xl text-stone-200 font-medium drop-shadow-lg max-w-xl px-4 mt-2"
-                    style="text-shadow: 0 2px 4px rgba(0,0,0,0.9);">
-                    Especialistas en galpones, tinglados y estructuras metálicas de todo tipo. Calidad y resistencia
-                    garantizada.
-                </p>
+                class="metal-container transform hover:scale-[1.02] transition-transform duration-500 flex flex-col items-center justify-center p-8 md:p-12 text-center gap-6 w-full max-w-lg md:max-w-4xl mx-auto shadow-2xl">
+
+                <!-- Título y Texto -->
+                <div class="flex flex-col items-center gap-4">
+                    <h1 class="plate-text text-center leading-none text-5xl sm:text-6xl md:text-7xl w-full">HERRERÍA<br
+                            class="md:hidden"> EN GENERAL</h1>
+                    <p class="text-base sm:text-lg md:text-xl text-stone-200 font-medium drop-shadow-lg max-w-2xl px-2"
+                        style="text-shadow: 0 2px 4px rgba(0,0,0,0.9);">
+                        Especialistas en galpones, tinglados y estructuras metálicas de todo tipo.
+                    </p>
+                </div>
+
+                <!-- Botones MOBILE (Dentro de la placa) -->
+                <div class="flex flex-col gap-3 w-full md:hidden mt-2">
+                    <a href="https://wa.me/5493442642911?text=Hola%20quiero%20hacer%20una%20consulta" target="_blank"
+                        class="flex items-center justify-center gap-2 bg-rust-600 hover:bg-rust-500 text-white text-lg font-semibold py-3 px-6 rounded-full shadow-lg shadow-rust-900/50 w-full transition-transform active:scale-95">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        Consultar por WhatsApp
+                    </a>
+                    <a href="#galeria"
+                        class="flex items-center justify-center gap-2 bg-black/40 border border-stone-400 text-white text-lg font-semibold py-3 px-6 rounded-full hover:bg-black/60 w-full backdrop-blur-sm transition-transform active:scale-95">
+                        Ver trabajos
+                    </a>
+                </div>
             </div>
 
-            <!-- Buttons -->
-            <div class="text-center max-w-3xl">
-                <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up delay-300">
+            <!-- Botones DESKTOP (Fuera de la placa) -->
+            <div class="text-center max-w-3xl mt-12 relative z-20 hidden md:block">
+                <div class="flex flex-row gap-4 justify-center fade-in-up delay-300">
                     <a href="https://wa.me/5493442642911?text=Hola%20quiero%20hacer%20una%20consulta" target="_blank"
                         class="flex items-center justify-center gap-2 bg-rust-600 hover:bg-rust-500 text-white text-lg font-semibold py-4 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg shadow-rust-900/50">
                         <i data-lucide="message-circle" class="w-5 h-5"></i>
