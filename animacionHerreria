@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FG Herrería - Animación Realista</title>
+    <style>
+        /* --- ENTORNO --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0a;
+            /* Fondo negro para que resalte la chapa */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Arial Black', 'Helvetica Black', sans-serif;
+        }
+
+        /* --- EL CONTENEDOR (LA CHAPA FOTOGRÁFICA) --- */
+        .metal-container {
+            position: relative;
+            /* Dimensiones aproximadas para que se vea bien la textura */
+            width: 80vw;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            /* Mantiene una buena proporción rectangular */
+
+            /* AQUÍ USAMOS TU IMAGEN REALISTA COMO FONDO */
+            background-image: url('fondo_chapa.png');
+            background-size: cover;
+            /* Cubre todo el contenedor */
+            background-position: center;
+
+            border-radius: 12px;
+            /* Sombra profunda para darle volumen 3D sobre el fondo negro */
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 100px rgba(0, 0, 0, 0.9);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* --- LAS LETRAS (Estilo Apagado) --- */
+        .letter {
+            font-size: clamp(3rem, 8vw, 6rem);
+            /* Tamaño dinámico según pantalla */
+            line-height: 1;
+            /* Color oscuro y semitransparente para que parezca grabado en el metal */
+            color: rgba(30, 15, 5, 0.7);
+
+            /* Sombra interna para dar efecto de profundidad (bajorrelieve) */
+            text-shadow:
+                1px 1px 1px rgba(255, 255, 255, 0.1),
+                /* Borde de luz inferior */
+                -2px -2px 5px rgba(0, 0, 0, 0.9);
+            /* Sombra interna superior */
+
+            position: relative;
+            z-index: 2;
+            transition: all 0.15s ease-out;
+            user-select: none;
+            /* Modo de fusión para que la textura del fondo se note un poco a través de la letra apagada */
+            mix-blend-mode: multiply;
+        }
+
+        .letter-space {
+            width: 2rem;
+        }
+
+        /* --- LAS LETRAS (Estilo ENCENDIDO - Soldadura) --- */
+        .letter.active {
+            /* Centro blanco/amarillo incandescente */
+            color: #fffce0;
+            /* Resplandor de fuego intenso */
+            text-shadow:
+                0 0 10px #ffdd00,
+                /* Amarillo núcleo */
+                0 0 30px #ff7700,
+                /* Naranja medio */
+                0 0 70px #ff2200;
+            /* Rojo externo lejano */
+            /* Quitamos el blend mode para que brille con fuerza */
+            mix-blend-mode: normal;
+        }
+
+        /* --- LAS CHISPAS (Animación) --- */
+        .spark {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 20;
+            /* Halo de calor intenso */
+            box-shadow: 0 0 5px #ffcc00, 0 0 15px #ff4400;
+        }
+
+        @keyframes spark-fly {
+            0% {
+                transform: translate(0, 0) scale(1.4);
+                opacity: 1;
+            }
+
+            100% {
+                /* Caen por gravedad y se apagan */
+                transform: translate(var(--tx), var(--ty)) scale(0.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="metal-container" id="plateContainer">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById('plateContainer');
+            const textToType = "FG HERRERIA";
+            const sparksPerLetter = 40; // Un buen número de chispas
+            const typingSpeed = 220; // Velocidad de escritura
+
+            // 1. Preparar letras
+            textToType.split('').forEach(char => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.classList.add('letter');
+                if (char === ' ') span.classList.add('letter-space');
+                container.appendChild(span);
+            });
+
+            const letters = document.querySelectorAll('.letter');
+
+            // 2. Función para lanzar chispas
+            function spawnSparksAt(rect) {
+                const centerX = rect.left + (rect.width / 2);
+                const centerY = rect.top + (rect.height / 2);
+
+                for (let i = 0; i < sparksPerLetter; i++) {
+                    const spark = document.createElement('div');
+                    spark.classList.add('spark');
+                    document.body.appendChild(spark);
+
+                    // Pequeña variación en el punto de origen
+                    const variationX = (Math.random() - 0.5) * 30;
+                    const variationY = (Math.random() - 0.5) * 10;
+                    spark.style.left = (centerX + variationX) + 'px';
+                    spark.style.top = (centerY + variationY) + 'px';
+
+                    // Física: Explosión hacia arriba y caída por gravedad
+                    // Ángulo mayormente hacia arriba (entre PI y 2*PI)
+                    const angle = Math.PI + (Math.random() * Math.PI);
+                    const velocity = 50 + Math.random() * 70;
+
+                    const tx = (Math.cos(angle) * velocity) + 'px';
+                    // Gravedad fuerte positiva en Y
+                    const gravity = 80 + Math.random() * 100;
+                    const ty = (Math.sin(angle) * velocity + gravity) + 'px';
+
+                    spark.style.setProperty('--tx', tx);
+                    spark.style.setProperty('--ty', ty);
+
+                    const duration = 0.4 + Math.random() * 0.5 + 's';
+                    spark.style.animation = `spark-fly ${duration} ease-out forwards`;
+
+                    setTimeout(() => { spark.remove(); }, 1000);
+                }
+            }
+
+            // 3. Bucle de animación principal
+            letters.forEach((letterSpan, index) => {
+                setTimeout(() => {
+                    letterSpan.classList.add('active');
+                    if (!letterSpan.classList.contains('letter-space')) {
+                        const rect = letterSpan.getBoundingClientRect();
+                        spawnSparksAt(rect);
+                    }
+                    // Inicio retardado de 0.8s
+                }, index * typingSpeed + 800);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

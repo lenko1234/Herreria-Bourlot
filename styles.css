@@ -35,3 +35,164 @@ body {
 .delay-300 {
     animation-delay: 0.3s;
 }
+
+/* --- ANIMACIÓN HERRERÍA --- */
+
+/* --- EL CONTENEDOR (LA CHAPA FOTOGRÁFICA) --- */
+.metal-container {
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    /* Más chico */
+    /* aspect-ratio eliminado para que se ajuste al contenido */
+    background-image: url('assets/fondo_chapa.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 60px rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    margin: 0 auto;
+    /* Centrado horizontal */
+}
+
+/* --- LAS LETRAS (Estilo Apagado) --- */
+.letter {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height: 1;
+    color: rgba(30, 15, 5, 0.7);
+    text-shadow:
+        1px 1px 1px rgba(255, 255, 255, 0.1),
+        -2px -2px 5px rgba(0, 0, 0, 0.9);
+    position: relative;
+    z-index: 2;
+    transition: all 0.15s ease-out;
+    user-select: none;
+    mix-blend-mode: multiply;
+}
+
+.letter-space {
+    width: 2rem;
+}
+
+/* --- LAS LETRAS (Estilo ENCENDIDO - Soldadura) --- */
+.letter.active {
+    color: #fffce0;
+    text-shadow:
+        0 0 10px #ffdd00,
+        0 0 30px #ff7700,
+        0 0 70px #ff2200;
+    mix-blend-mode: normal;
+}
+
+:root {
+    --primary-color: #ea580c;
+    /* Rust 500 */
+    --primary-light: #fb923c;
+    /* Rust 400 */
+    --primary-dark: #c2410c;
+    /* Rust 600 */
+    --primary-darker: #431407;
+    /* Rust 900 */
+
+    --bg-dark: #1c1917;
+    /* Metal 800 (Stone) */
+    --bg-darker: #0c0a09;
+    /* Metal 900 (Stone) */
+    --bg-card: #292524;
+    /* Stone 800 */
+
+    --text-light: #e7e5e4;
+    /* Stone 200 */
+    --text-gray: #a8a29e;
+    /* Stone 400 */
+    --border-color: #44403c;
+    /* Stone 700 */
+
+    --transition: all 0.3s ease;
+}
+
+/* Clase para texto con textura de chapa */
+.text-chapa {
+    background-image: url('assets/fondo_chapa.png');
+    background-size: cover;
+    background-position: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900;
+    filter: brightness(1.5) contrast(1.2);
+    /* Para que resalte sobre fondo oscuro */
+}
+
+/* --- LAS CHISPAS (Animación) --- */
+.spark {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 20;
+    box-shadow: 0 0 5px #ffcc00, 0 0 15px #ff4400;
+}
+
+@keyframes spark-fly {
+    0% {
+        transform: translate(0, 0) scale(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0.2);
+        opacity: 0;
+    }
+}
+
+/* --- AJUSTES PARA ANIMACIÓN EN NAVBAR --- */
+#navbarLogoAnimation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+    /* Permitir que las chispas salgan */
+}
+
+#navbarLogoAnimation .letter {
+    font-size: 2.5rem;
+    /* Tamaño para el navbar */
+    color: #ea580c;
+    /* Color base visible (Rust 500) */
+    text-shadow: none;
+    mix-blend-mode: normal;
+}
+
+#navbarLogoAnimation .letter.active {
+    color: #fffce0;
+    text-shadow:
+        0 0 5px #ffdd00,
+        0 0 15px #ff7700;
+}
+
+#navbarLogoAnimation .letter-space {
+    width: 0.8rem;
+}
+
+#navbarLogoAnimation .spark {
+    width: 2px;
+    height: 2px;
+}
+
+/* --- TEXTO DENTRO DE LA PLACA (HERO) --- */
+.plate-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 6rem);
+    color: rgba(0, 0, 0, 0.6);
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.1), -1px -1px 2px rgba(0, 0, 0, 0.8);
+    letter-spacing: 4px;
+    mix-blend-mode: overlay;
+    /* Efecto grabado en el metal */
+}
