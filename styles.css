@@ -213,3 +213,36 @@ body {
     mix-blend-mode: overlay;
     /* Efecto grabado en el metal */
 }
+
+/* --- CATÁLOGO --- */
+.grid-catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    /* Espaciado estricto */
+    width: 100%;
+}
+
+.catalogo-card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.catalogo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color);
+}
+
+.catalogo-card img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    /* Proporción estricta */
+    object-fit: cover;
+    /* Evita deformación */
+    display: block;
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | FG Herrería</title>
+    <meta name="description"
+        content="Catálogo de productos de FG Herrería. Galpones, tinglados, rejas, portones y estructuras metálicas.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&family=Montserrat:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- Iconos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-metal-900 text-stone-100 antialiased selection:bg-rust-500 selection:text-white">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-metal-900/90 backdrop-blur-md border-b border-stone-800 transition-all duration-300"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0" id="navbarLogoAnimation" style="height: 40px; min-width: 200px;">
+                    <!-- Animación inyectada por JS -->
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#inicio"
+                            class="hover:text-rust-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                        <a href="index.html#servicios"
+                            class="hover:text-rust-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Servicios</a>
+                        <a href="index.html#galeria"
+                            class="hover:text-rust-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Proyectos</a>
+                        <a href="catalogo.html"
+                            class="text-rust-400 font-bold px-3 py-2 rounded-md text-sm">Catálogo</a>
+                        <a href="index.html#contacto"
+                            class="bg-rust-600 hover:bg-rust-500 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">Contactar</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMenu()"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-stone-400 hover:text-white hover:bg-stone-700 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-metal-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html#inicio"
+                    class="text-stone-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="index.html#servicios"
+                    class="text-stone-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Servicios</a>
+                <a href="index.html#galeria"
+                    class="text-stone-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Proyectos</a>
+                <a href="catalogo.html"
+                    class="text-rust-400 font-bold block px-3 py-2 rounded-md text-base">Catálogo</a>
+                <a href="index.html#contacto"
+                    class="text-rust-400 hover:text-rust-300 block px-3 py-2 rounded-md text-base font-medium">Contactar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Simple para Catálogo -->
+    <section class="pt-32 pb-12 bg-metal-900 border-b border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Catálogo de Productos</h1>
+            <div class="w-24 h-1 bg-rust-500 mx-auto rounded-full mb-6"></div>
+            <p class="text-xl text-stone-400 max-w-2xl mx-auto">
+                Explora nuestra selección completa de trabajos y soluciones metálicas.
+            </p>
+        </div>
+    </section>
+
+    <!-- Catálogo de Productos -->
+    <section id="catalogo" class="py-16 bg-metal-800 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Grid del Catálogo (Inyectado por JS) -->
+            <div id="catalogo-grid" class="grid-catalogo">
+                <!-- Las tarjetas se generarán aquí -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner CTA -->
+    <section id="contacto" class="py-20 bg-rust-900/20 border-y border-stone-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">¿Te interesa algún producto?</h2>
+            <p class="text-lg text-stone-300 mb-8">
+                Envíanos una captura o el nombre del producto y te asesoramos sin cargo.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <!-- Botón WhatsApp Principal -->
+                <a href="https://wa.me/5493442642911?text=Hola%20vi%20un%20producto%20en%20el%20catalogo%20y%20quiero%20consultar"
+                    target="_blank"
+                    class="inline-flex items-center justify-center gap-3 bg-rust-600 hover:bg-rust-500 text-white font-bold py-4 px-8 rounded-lg transition-all shadow-lg hover:shadow-rust-500/20 w-full sm:w-auto">
+                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    Consultar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-metal-900 py-12 border-t border-stone-800">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <a href="https://instagram.com/fg_herrero" target="_blank"
+                    class="text-stone-400 hover:text-rust-500 transition-colors">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <span class="text-xl font-bold tracking-tighter text-white">FG<span
+                        class="text-rust-500">_HERRERO</span></span>
+            </div>
+            <p class="text-stone-500 text-sm">© 2025 FG Herrería. Todos los derechos reservados.</p>
+            <div class="flex gap-4">
+                <a href="https://wa.me/5493442642911?text=Hola%20quiero%20hacer%20una%20consulta" target="_blank"
+                    class="text-stone-400 hover:text-rust-500 transition-colors">
+                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/5493442642911?text=Hola%20quiero%20hacer%20una%20consulta" target="_blank"
+        class="fixed bottom-6 right-6 bg-rust-500 hover:bg-rust-400 text-white p-4 rounded-full shadow-2xl transition-transform hover:scale-110 z-50 flex items-center justify-center group">
+        <i data-lucide="message-circle" class="w-8 h-8 fill-current"></i>
+        <span
+            class="absolute right-full mr-4 bg-white text-rust-900 px-3 py-1 rounded-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
+            ¡Hacé tu consulta!
+        </span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

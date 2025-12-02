@@ -105,3 +105,132 @@ document.addEventListener("DOMContentLoaded", () => {
         }, index * typingSpeed + 500);
     });
 });
+
+// --- CATÁLOGO DE PRODUCTOS ---
+const imagenesCatalogo = [
+    'WhatsApp Image 2025-12-01 at 8.13.02 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.02 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.22 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.23 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.24 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.24 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.26 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.28 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.32 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.33 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.33 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.34 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.35 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.13.36 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.32 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.32 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.33 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.33 PM (2).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.33 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.34 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.34 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.36 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.37 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.37 PM (2).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.37 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.38 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.39 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.40 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.41 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.42 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.42 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.43 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.44 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.47 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.51 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.18.52 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.22 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.37 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.39 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.39 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.41 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.46 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.47 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.50 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.51 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.52 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.53 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.54 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.55 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.58 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.36.59 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.37.00 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.37.00 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.38.53 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.38.54 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.39.10 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.44.23 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.44.24 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.56.36 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.56.37 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.56.57 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.57.19 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.57.21 PM.jpeg',
+    'WhatsApp Image 2025-12-01 at 8.57.23 PM (1).jpeg',
+    'WhatsApp Image 2025-12-01 at 8.57.23 PM.jpeg'
+];
+
+function renderCatalogo() {
+    const grid = document.getElementById('catalogo-grid');
+    if (!grid) return;
+
+    imagenesCatalogo.forEach(imagen => {
+        const card = document.createElement('div');
+        card.className = 'catalogo-card group';
+
+        // Estructura de la tarjeta
+        card.innerHTML = `
+            <div class="relative overflow-hidden h-full">
+                <img src="assets/catalogo/${imagen}" 
+                     alt="Producto de Herrería" 
+                     loading="lazy"
+                     class="transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                </div>
+            </div>
+        `;
+
+        grid.appendChild(card);
+    });
+}
+
+function renderProyectosDestacados() {
+    const grid = document.getElementById('proyectos-destacados-grid');
+    if (!grid) return;
+
+    // Seleccionar 3 imágenes aleatorias únicas
+    const indicesAleatorios = new Set();
+    while (indicesAleatorios.size < 3 && indicesAleatorios.size < imagenesCatalogo.length) {
+        const indice = Math.floor(Math.random() * imagenesCatalogo.length);
+        indicesAleatorios.add(indice);
+    }
+
+    indicesAleatorios.forEach(indice => {
+        const imagen = imagenesCatalogo[indice];
+        const card = document.createElement('a');
+        card.href = 'catalogo.html';
+        card.className = 'group relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-square cursor-pointer block';
+
+        card.innerHTML = `
+            <img src="assets/catalogo/${imagen}"
+                alt="Proyecto destacado"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
+        `;
+
+        grid.appendChild(card);
+    });
+}
+
+// Ejecutar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    renderCatalogo();
+    renderProyectosDestacados();
+});

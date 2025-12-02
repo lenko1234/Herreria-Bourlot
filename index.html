@@ -37,6 +37,8 @@
                             class="hover:text-rust-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Servicios</a>
                         <a href="#galeria"
                             class="hover:text-rust-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Proyectos</a>
+                        <a href="catalogo.html"
+                            class="hover:text-rust-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Catálogo</a>
                         <a href="#contacto"
                             class="bg-rust-600 hover:bg-rust-500 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">Contactar</a>
                     </div>
@@ -59,6 +61,8 @@
                     class="text-stone-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Servicios</a>
                 <a href="#galeria"
                     class="text-stone-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Proyectos</a>
+                <a href="catalogo.html"
+                    class="text-stone-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Catálogo</a>
                 <a href="#contacto"
                     class="text-rust-400 hover:text-rust-300 block px-3 py-2 rounded-md text-base font-medium">Contactar</a>
             </div>
@@ -125,9 +129,9 @@
     <section id="servicios" class="py-24 bg-metal-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Mis Servicios</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Servicios</h2>
                 <div class="w-20 h-1 bg-rust-500 mx-auto rounded-full"></div>
-                <p class="mt-4 text-stone-400">Soluciones integrales en metalurgia para hogares e industrias.</p>
+
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -188,42 +192,8 @@
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Imagen 1 (Simulación basada en IG - Galpón estructura) -->
-                <div class="group relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-square cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                        alt="Estructura metálica"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-rust-400 text-sm font-bold uppercase">Industrial</span>
-                        <h3 class="text-white text-xl font-bold">Estructura de Galpón</h3>
-                    </div>
-                </div>
-
-                <!-- Imagen 2 (Simulación basada en IG - Escalera moderna) -->
-                <div class="group relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-square cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1563297136-1c255762d398?q=80&w=800&auto=format&fit=crop"
-                        alt="Escalera hierro"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-rust-400 text-sm font-bold uppercase">Diseño</span>
-                        <h3 class="text-white text-xl font-bold">Escalera Flotante</h3>
-                    </div>
-                </div>
-
-                <!-- Imagen 3 (Simulación basada en IG - Fachada/Techo) -->
-                <div class="group relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-square cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1590725140246-20ac7013e6a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                        alt="Tinglado techo"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-rust-400 text-sm font-bold uppercase">Exterior</span>
-                        <h3 class="text-white text-xl font-bold">Montaje de Tinglado</h3>
-                    </div>
-                </div>
+            <div id="proyectos-destacados-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Las imágenes destacadas se inyectarán aquí por JS -->
             </div>
         </div>
     </section>
