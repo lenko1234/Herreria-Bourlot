@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!container) return;
 
     const textToType = "FG HERRERIA";
-    const sparksPerLetter = 15; // Menos chispas para el logo pequeño
+    const sparksPerLetter = 50; // Más chispas para mejor efecto
     const typingSpeed = 150; // Más rápido
 
     // 1. Preparar letras
@@ -81,13 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const velocity = 20 + Math.random() * 30; // Menor velocidad
 
             const tx = (Math.cos(angle) * velocity) + 'px';
-            const gravity = 40 + Math.random() * 50; // Menor gravedad
+            const gravity = 60 + Math.random() * 60; // Gravedad moderada
             const ty = (Math.sin(angle) * velocity + gravity) + 'px';
 
             spark.style.setProperty('--tx', tx);
             spark.style.setProperty('--ty', ty);
 
-            const duration = 0.3 + Math.random() * 0.4 + 's';
+            const duration = 0.3 + Math.random() * 0.4 + 's'; // Duración original
             spark.style.animation = `spark-fly ${duration} ease-out forwards`;
 
             setTimeout(() => { spark.remove(); }, 1000);

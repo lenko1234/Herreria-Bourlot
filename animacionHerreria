@@ -125,7 +125,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             const container = document.getElementById('plateContainer');
             const textToType = "FG HERRERIA";
-            const sparksPerLetter = 40; // Un buen número de chispas
+            const sparksPerLetter = 100; // Un buen número de chispas
             const typingSpeed = 220; // Velocidad de escritura
 
             // 1. Preparar letras
@@ -162,7 +162,7 @@
 
                     const tx = (Math.cos(angle) * velocity) + 'px';
                     // Gravedad fuerte positiva en Y
-                    const gravity = 80 + Math.random() * 100;
+                    const gravity = 120 + Math.random() * 100;
                     const ty = (Math.sin(angle) * velocity + gravity) + 'px';
 
                     spark.style.setProperty('--tx', tx);
