@@ -203,25 +203,27 @@ function renderProyectosDestacados() {
     const grid = document.getElementById('proyectos-destacados-grid');
     if (!grid) return;
 
-    // Seleccionar 3 imágenes aleatorias únicas
-    const indicesAleatorios = new Set();
-    while (indicesAleatorios.size < 3 && indicesAleatorios.size < imagenesCatalogo.length) {
-        const indice = Math.floor(Math.random() * imagenesCatalogo.length);
-        indicesAleatorios.add(indice);
-    }
+    // Imágenes fijas para la sección destacada
+    const imagenesDestacadas = [
+        'assets/featured/escalera_madera.jpg',
+        'assets/featured/tanque_agua.jpg',
+        'assets/featured/galpon_techo.jpg'
+    ];
 
-    indicesAleatorios.forEach(indice => {
-        const imagen = imagenesCatalogo[indice];
+    imagenesDestacadas.forEach(imagenSrc => {
         const card = document.createElement('a');
         card.href = 'catalogo.html';
         card.className = 'group relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-square cursor-pointer block';
 
         card.innerHTML = `
-            <img src="assets/catalogo/${imagen}"
+            <img src="${imagenSrc}"
                 alt="Proyecto destacado"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
             <div
                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-4 left-4 text-white">
+                    <p class="font-bold text-lg">Ver proyecto</p>
+                </div>
             </div>
         `;
 
