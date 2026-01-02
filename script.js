@@ -189,6 +189,7 @@ function renderCatalogo() {
                 <img src="assets/catalogo/${imagen}" 
                      alt="Producto de Herrería" 
                      loading="lazy"
+                     decoding="async"
                      class="transition-transform duration-500 group-hover:scale-110">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 </div>
@@ -218,6 +219,7 @@ function renderProyectosDestacados() {
         card.innerHTML = `
             <img src="${imagenSrc}"
                 alt="Proyecto destacado"
+                decoding="async"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
             <div
                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">

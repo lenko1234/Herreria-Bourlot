@@ -54,7 +54,7 @@ body {
     max-width: 750px;
     /* Más chico */
     /* aspect-ratio eliminado para que se ajuste al contenido */
-    background-image: url('assets/fondo_chapa.png');
+    background-image: url('assets/fondo_chapa.webp');
     background-size: cover;
     background-position: center;
     border-radius: 12px;
@@ -69,7 +69,7 @@ body {
 
 @media (max-width: 768px) {
     .metal-container {
-        background-image: url('assets/fondo_chapa_plana.jpg');
+        background-image: url('assets/fondo_chapa_plana.webp');
         background-position: center;
         background-size: cover;
     }
@@ -134,7 +134,7 @@ body {
 
 /* Clase para texto con textura de chapa */
 .text-chapa {
-    background-image: url('assets/fondo_chapa.png');
+    background-image: url('assets/fondo_chapa.webp');
     background-size: cover;
     background-position: center;
     -webkit-background-clip: text;

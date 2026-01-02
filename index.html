@@ -8,14 +8,143 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="description"
         content="Especialistas en galpones, tinglados y estructuras metálicas. Herrería en general con calidad y resistencia garantizada.">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+
+    <!-- Preload LCP Image -->
+    <link rel="preload" as="image"
+        href="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80">
+
+    <!-- Google Fonts with font-display: swap -->
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&family=Montserrat:wght@700&display=swap"
         rel="stylesheet">
-    <!-- Iconos -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconos - Deferred -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Estilos Críticos -->
+    <!-- Estilos Críticos -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .metal-container {
+            position: relative;
+            width: 100%;
+            max-width: 750px;
+            background-image: url('assets/fondo_chapa.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 60px rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .metal-container {
+                background-image: url('assets/fondo_chapa_plana.webp');
+            }
+        }
+
+        /* Navbar Animation Fixes */
+        #navbarLogoAnimation {
+            display: flex;
+            align-items: center;
+            overflow: visible;
+            height: 40px;
+        }
+
+        #navbarLogoAnimation .letter {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: #ea580c;
+            position: relative;
+            z-index: 2;
+            transition: all 0.15s ease-out;
+            line-height: 1;
+        }
+
+        #navbarLogoAnimation .letter.active {
+            color: #fffce0;
+            text-shadow: 0 0 5px #ffdd00, 0 0 15px #ff7700;
+            mix-blend-mode: normal;
+        }
+
+        .spark {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 20;
+            box-shadow: 0 0 5px #ffcc00, 0 0 15px #ff4400;
+        }
+
+        @keyframes spark-fly {
+            0% {
+                transform: translate(0, 0) scale(1.4);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0.2);
+                opacity: 0;
+            }
+        }
+
+        .letter-space {
+            width: 0.8rem;
+        }
+
+        .plate-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            color: rgba(0, 0, 0, 0.6);
+            text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.1), -1px -1px 2px rgba(0, 0, 0, 0.8);
+            letter-spacing: 4px;
+            mix-blend-mode: overlay;
+        }
+    </style>
+
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -250,7 +379,7 @@
     </a>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
 </body>
 
